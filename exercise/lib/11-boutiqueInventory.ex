@@ -10,10 +10,18 @@ defmodule BoutiqueInventory do
   end
 
   def increase_quantity(item, count) do
-    Map.new(item, fn {k, v} -> {k, v} end)
+    new_value =
+      Map.new(item.quantity_by_size, fn {key, value} -> {key, value + count} end)
+
+    Map.put(item, :quantity_by_size, new_value)
   end
 
   def total_quantity(item) do
+    all_sizes =
+      Map.new(item.quantity_by_size, fn {k, v} -> {k,v} end)
+      |> Map.values()
+
+    Enum.reduce(all_sizes, 0, fn size, acc ->  size + acc end)
   end
 end
 
