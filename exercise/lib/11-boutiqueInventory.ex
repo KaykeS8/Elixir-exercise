@@ -24,17 +24,3 @@ defmodule BoutiqueInventory do
     Enum.reduce(all_sizes, 0, fn size, acc ->  size + acc end)
   end
 end
-
-
-# inventory = [
-#   %{price: 65, name: "Maxi Brown Dress", quantity_by_size: %{}},
-#   %{price: nil, name: "Red Short Skirt", quantity_by_size: %{}},
-#   %{price: nil, name: "Black Short Skirt", quantity_by_size: %{}},
-#   %{price: 20, name: "Bamboo Socks Cats", quantity_by_size: %{}}
-# ]
-
-# data = %{
-#   name: "Polka Dot Skirt",
-#   price: 68,
-#   quantity_by_size: %{s: 3, m: 5, l: 3, xl: 4}
-# }
