@@ -17,10 +17,8 @@ defmodule BoutiqueInventory do
   end
 
   def total_quantity(item) do
-    all_sizes =
       Map.new(item.quantity_by_size, fn {k, v} -> {k,v} end)
       |> Map.values()
-
-    Enum.reduce(all_sizes, 0, fn size, acc ->  size + acc end)
+      |> Enum.reduce(0, fn size, acc -> size + acc end)
   end
 end
