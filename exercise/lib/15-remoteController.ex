@@ -4,7 +4,8 @@ defmodule RemoteControlCar do
 
   def new(nickname \\ "none"), do: %RemoteControlCar{nickname: nickname}
 
-  def display_distance(%RemoteControlCar{distance_driven_in_meters: distance}), do: "#{distance} meters"
+  def display_distance(%RemoteControlCar{distance_driven_in_meters: distance}),
+    do: "#{distance} meters"
 
   def display_battery(%RemoteControlCar{battery_percentage: battery}) do
     case battery do
@@ -13,10 +14,23 @@ defmodule RemoteControlCar do
     end
   end
 
-  def drive(%RemoteControlCar{battery_percentage: battery, distance_driven_in_meters: distance, nickname: name} = car) do
+  def drive(
+        %RemoteControlCar{
+          battery_percentage: battery,
+          distance_driven_in_meters: distance,
+          nickname: name
+        } = car
+      ) do
     case battery do
-      0 -> car
-      _  -> %RemoteControlCar{battery_percentage: battery - 1, distance_driven_in_meters: distance + 20, nickname: name}
+      0 ->
+        car
+
+      _ ->
+        %RemoteControlCar{
+          battery_percentage: battery - 1,
+          distance_driven_in_meters: distance + 20,
+          nickname: name
+        }
     end
   end
 end
